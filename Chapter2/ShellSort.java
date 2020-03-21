@@ -9,7 +9,7 @@
         {
             int h = 1;
 
-            /* Donald Knuth's 3x + 1 incrementing sequence:
+            /* Donald Knuth's 3h + 1 incrementing sequence:
                1, 4, 13, 40, 121, 364, ... */
             while (h < array.length / 3)
                 h = (3 * h) + 1;
