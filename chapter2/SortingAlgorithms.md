@@ -29,9 +29,31 @@ The time complexity for selection sort is O(n<sup>2</sup>). This can be proven b
 
 The space complexity is O(1) because the algorithm allocates the same amount of space regardless of how large the array is.
 
+---
+
 ### **Insertion Sort**
 
+![Insertion Sort GIF](/images/InsertionSort.gif)
+
+The next sorting algorithm to consider is insertion sort. Insertion sort works by, like selection sort, dividing the array into a sorted and unsorted subarray. As the algorithm iterates through the unsorted subarray, it goes back into the sorted subarray to find where the current value should be placed such that the sorted subarray is still sorted.Unlike selection sort, insertion sort's speed drastically increases if the array's entries are partially (or even completely) sorted. This fact will play an important role when we study the last of the elementary sorting algorithms, Shell sort.
+
+#### Time/Space Complexity for Insertion Sort
+
+The time complexity for insertion sort is O(n<sup>2</sup>). The reasoning is similar to that of selection sort, and if we assume that on average, a value is sent about halfway back, then there will be n<sup>2</sup> / 4 comparisons.
+
+The space complexity for insertion sort is O(1) for the same reason as selection sort.
+
 ### **Bubble Sort**
+
+![Bubble Sort GIF](/images/BubbleSort.gif)
+
+Bubble sort gets its name from the way the values in the array seem to "bubble" towards the end of the array. Unlike selection and insertion sort, bubble sort seems to sort the array by bringing the largest values to their correct position first, which is the exact opposite of what happens during selection or insertion sort. In this sorting algorithm, we keep scanning through the entire array, comparing values to their right neighbor. If the neighbor's value is smaller, then the two values are swapped. This process repeats itself over and over until we make it through the entire array without having to swap anything, which tells us that the array is sorted.
+
+#### Time/Space Complexity for Bubble Sort
+
+Like the other elementary sorting algorithms, the time complexity for bubble sort is O(n<sup>2</sup>). At this point, we begin to see a pattern in the code. In cases where the sorting algorithms make use of nested loops, the time complexity seems to always be quadratic. In terms of practicality, insertion sort seems to just be equally good, if not better in all categories (especially in the case of partially sorted arrays), so bubble sort is not considered to be a practical sorting algorithm.
+
+The space complexity for bubble sort is O(1), like the other elementary sorting algorithms we've seen so far.
 
 ### **Shell Sort**
 
