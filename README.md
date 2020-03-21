@@ -1,6 +1,6 @@
 # **README**
 
-!["Algorithms" by Robert Sedgewick and Kevin Wayne](/images/Algorithms.png)
+<img src="images/Algorithms.png" alt="Algorithms" height="377" width="300"/>
 
 ## **Purpose of This Repository**
 

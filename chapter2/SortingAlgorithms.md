@@ -43,6 +43,8 @@ The time complexity for insertion sort is O(n<sup>2</sup>). The reasoning is sim
 
 The space complexity for insertion sort is O(1) for the same reason as selection sort.
 
+---
+
 ### **Bubble Sort**
 
 ![Bubble Sort GIF](/images/BubbleSort.gif)
@@ -55,8 +57,14 @@ Like the other elementary sorting algorithms, the time complexity for bubble sor
 
 The space complexity for bubble sort is O(1), like the other elementary sorting algorithms we've seen so far.
 
+---
+
 ### **Shell Sort**
 
+---
+
 ### **Mergesort**
+
+---
 
 ### **Quicksort**
