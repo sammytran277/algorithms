@@ -1,25 +1,21 @@
 /* Adapted code from "Algorithms" by Robert Sedgewick and Thomas Wayne 
-   to implement the elementary selection sort algorithm */
+   to implement the elementary insertion sort algorithm */
 
 import java.util.Scanner;
 
-public class SelectionSort
+public class InsertionSort
 {
     public static void sort(int[] array)
     {
         for (int i = 0; i < array.length; i++)
         {
-            int indexOfMin = i;
-
-            /* iterate through the all indexes > i to find
-               the index of the minimum value in the subarray */
-            for (int j = i + 1; j < array.length; j++)
+            for (int j = i; j > 0; j--)
             {
-                if (array[j] < array[indexOfMin])
-                    indexOfMin = j;
+                if (array[j] < array[j - 1])
+                    swap(array, j, j - 1);
+                else
+                    break;
             }
-
-            swap(array, i, indexOfMin);
         }
     }
 
