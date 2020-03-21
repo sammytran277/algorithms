@@ -1,5 +1,5 @@
 /* Adapted code from "Algorithms" by Robert Sedgewick and Thomas Wayne 
-   to implement the elementary shell sort algorithm */
+   to implement the elementary Shell sort algorithm */
 
    import java.util.Scanner;
 
