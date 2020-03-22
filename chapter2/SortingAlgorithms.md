@@ -61,6 +61,24 @@ The space complexity for bubble sort is O(1), like the other elementary sorting 
 
 ### **Shell Sort**
 
+![Shell Sort GIF](/images/ShellSort.gif)
+
+Shell sort is the last of the elementary sorting algorithms we will consider, and unlike all of the sorting algorithms we have seen so far, the jury is still out regarding just how good this sort can be.
+
+Shell sort works by utilizing the fact that the time complexity for insertion sort approaches O(n) when the array to sort is partially sorted. The idea is then to find a way to quickly "partially sort" an array and then feed it to insertion sort. Shell sort does this by introducing a concept known as "h-sorting" an array.
+
+When we say that an array is h-sorted, we are saying that, for a gap of size h, the values of the array are sorted. For example, the array containing [5, 1, 6, 2, 7] is said to be 2-sorted becayse 5 < 6 < 7 and 1 < 2. The whole point of h-sorting an array is to eliminate the issue of having to move a value in insertion sort from one side of the array to the other, one swap at a time. For example, in the case of a reverse sorted array like [5, 4, 3, 2 1], the value 1 would ultimately need (n - 1) swaps to get to index 0.
+
+To h-sort an array, we just consider the subarray containing values that are h indexes apart from each other and sort that subarray using a method like insertion sort. For example, to 2-sort [4, 2, 1, 2, 5], we would consider the subarrays [4, 1, 5] and [2, 2]. By sorting both arrays, we end up with [1, 4, 5] and [2, 3]. Combining the subarrays back together, we have [1, 2, 3, 2, 5], which insertion sort can iterate through very quickly.
+
+The real question is then, what should h be in order to maximize the efficiency of Shell sort? This is still open for debate, and many sequences have been tried. For my implementation, I used Donald Knuth's 3h + 1 sequence, which is simple to compute. Much more complex sequences exist, and much research has been done to analyze their performance.
+
+#### **Time/Space Complexity for Shell Sort**
+
+As stated earlier, the time complexity for Shell sort is not easy to pinpoint. This is because the speed of the algorithm is heavily dependent on the gap sequence chosen by the programmer. Because Shell sort is an improvement of insertion sort, we can only say that it performs no worse than O(n<sup>2</sup>) and on average, is subquadratic.
+
+Like the other elementary sorting algorithms, Shell sort has a space complexity of O(1).
+
 ---
 
 ### **Mergesort**
