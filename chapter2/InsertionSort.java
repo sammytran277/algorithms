@@ -9,13 +9,8 @@ public class InsertionSort
     {
         for (int i = 0; i < array.length; i++)
         {
-            for (int j = i; j > 0; j--)
-            {
-                if (array[j] < array[j - 1])
-                    swap(array, j, j - 1);
-                else
-                    break;
-            }
+            for (int j = i; j > 0 && array[j] < array[j - 1]; j--)
+                swap(array, j, j - 1);
         }
     }
 
