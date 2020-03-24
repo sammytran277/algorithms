@@ -1,8 +1,8 @@
-# **Sorting Algorithms**
+# **Notes on Sorting Algorithms and Priority Queues**
 
 ## **Introduction**
 
-In chapter 2, we learn about three elementary sorting algorithms (namely, selection sort, insertion sort, and Shellsort) and two classic divide-and-conquer sorting algorithms (mergesort and quicksort). Though not mentioned in the book/course, I've also included bubble sort for fun. Notes on each algorithm are given below.
+In chapter 2, we learn about three elementary sorting algorithms (namely, selection sort, insertion sort, and Shellsort), two classic divide-and-conquer sorting algorithms (mergesort and quicksort), and priority queues. Though not mentioned in the book/course, I've also included bubble sort for fun. Notes on everything are given below.
 
 ---
 
@@ -11,9 +11,9 @@ In chapter 2, we learn about three elementary sorting algorithms (namely, select
 * [Selection Sort](#selection-sort)
 * [Insertion Sort](#insertion-sort)
 * [Bubble Sort](#bubble-sort)
-* [Shellsort](#shell-sort)
-* [Mergesort](#merge-sort)
-* [Quicksort](#quick-sort)
+* [Shellsort](#shellsort)
+* [Mergesort](#mergesort)
+* [Quicksort](#quicksort)
 
 ---
 
