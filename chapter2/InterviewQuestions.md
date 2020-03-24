@@ -1,5 +1,10 @@
 # **Interview Questions: Sorting Algorithms**
 
+## Table of Contents
+* [Elementary Sorts](#i.-elementary-sorts)
+* [Mergesort](#ii.-mergesort)
+* [Quicksort](#iii.-quicksort)
+
 ## **I. Elementary Sorts**
 
 #### 1) **Intersection of two sets.** Given two arrays a[] and b[], each containing n distinct 2D points in the plane, design a subquadratic algorithm to count the number of points that are contained both in array a[] and array b[].
@@ -109,6 +114,16 @@ The space complexity (as required above) is constant, or O(1).
 ---
 
 ## II. Mergesort
+
+#### 1) Merging with smaller auxiliary array. Suppose that the subarray a[0] to a[n−1] is sorted and the subarray a[n] to a[2∗n−1] is sorted. How can you merge the two subarrays so that a[0] to a[2∗n−1] is sorted using an auxiliary array of length nn (instead of 2n)?
+
+TBD
+
+#### 2) Counting inversions. An inversion in an array a[] is a pair of entries a[i] and a[j] such that i < j but a[i] > a[j]. Given an array, design a linearithmic algorithm to count the number of inversions.
+
+TBD
+
+#### 3) Shuffling a linked list. Given a singly-linked list containing n items, rearrange the items uniformly at random. Your algorithm should consume a logarithmic (or constant) amount of extra memory and run in time proportional to n*logn in the worst case.
 
 TBD
 
