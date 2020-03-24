@@ -23,7 +23,7 @@ public class QuickSort
         quicksort(array, j + 1, high);
     }
 
-    private static int partition(int[] array, int low, int high)
+    public static int partition(int[] array, int low, int high)
     {
         int i = low, j = high + 1;
         int partitioningItem = array[low];
