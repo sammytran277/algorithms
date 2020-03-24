@@ -47,9 +47,7 @@ public class SelectionSort
 
         System.out.print("Sorted array: ");
         for (int n : unsortedArray)
-        {
             System.out.print(n + " ");
-        }
 
         s.close();
     }
