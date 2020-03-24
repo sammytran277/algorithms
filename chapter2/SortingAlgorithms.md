@@ -83,6 +83,56 @@ Like the other elementary sorting algorithms, Shellsort has a space complexity o
 
 ### **Mergesort**
 
+![Merge Sort GIF](/images/MergeSort.gif)
+
+Mergesort (also called *top-down* mergesort) is one of the fastest sorting algorithms out there and is a great example of the *divide-and-conquer* technique for efficient algorithm design. What mergesort does is it recursively sorts the left half of the array, then the right, and then merges the two sorted subarrays back together. Studying a stack trace (like the one below) is helpful to understand what is actually happening in the recursive calls.
+
+    sort(T E S T)
+      sortSubarray(T E S T, index 0 and 1)
+        sortSubarray(T E S T, index 0 and 0)
+        sortSubarray(T E S T, index 1 and 1)
+        merge(T E S T, index 0, 0 and 1)
+      sortSubarray(E T S T, index 2 and 3)
+        sortSubarray(E T S T, index 2 and 2)
+        sortSubarray(E T S T, index 3 and 3)
+        merge(E T S T, index 2, 2 and 3)
+      merge(E T S T, index 0, 1, and 3)
+
+    RESULT: E S T T
+
+#### Time/Space Complexity for Mergesort
+
+The time complexity for mergesort is O(n * log<sub>2</sub>n), making it the fastest sort we've studied thus far. In fact, analysis of the complexity of sorting suggests that the lower bound for sorting, in general, is n * log<sub>2</sub>n, which means a sorting algorithm that does less comparisons than mergesort does not exist. With that being said, there are a few optimizations that can be done to speed up mergesort:
+
+* Use insertion sort for sorting the small subarrays
+* Test whether the two subarrays are already in order so we can skip the call to merge(). This can be done by testing if array[mid] <= array[mid + 1]
+* Eliminate the copy to the auxiliary array by swapping the role of input array and auxiliary array at each level (a bit complicated)
+
+The downside to mergesort is the space complexity, which is O(n). This is due to the use of an auxiliary array with size n to hold the last two sorted subarrays as we merge them back together. While it is possible to do the merging in-place, the solutions are too complicated in practice.
+
+---
+
+### **Bottom-up Mergesort**
+
+Bottom-up mergesort is conceptually similar to top-down mergesort, but instead of merging two larger subarrays, bottom-up mergesort starts by breaking the array into subarrays of size 1, doing 1-by-1 merges, then 2-by-2 merges, then 4-by-4 merges, and so on. The benefit of this approach is shorter code that does not need recursive calls. The tradeoff, however, is code that is more complicated. Like before, I've included a stack trace to show the difference between top-down mergesort and bottom-up mergesort.
+
+    sort(T E S T)
+      size = 1:
+        merge(T E S T, index 0, 0, and 1)
+        merge(E T S T, index 2, 2, and 3)
+      size = 2:
+        merge(E T S T, index 0, 1, and 3)
+
+    RESULT: E S T T 
+
+I will also note that a modified version of bottom-up mergesort is the method of choice when sorting a linked list because it rearranges the links to sort the list in place.
+
+#### **Time/Space Complexity for Bottom-up Mergesort**
+
+Like mergesort, the time complexity is O(n * log<sub>2</sub>n). When the array length is a power of 2, top-down mergesort and bottom-up mergesort, the same exact number of comparisons are made, just in a different order. If the array length is not a power of 2, the number of comparisons vary.
+
+The space complexity is O(n), just like the top-down version and for the exact same reasons.
+
 ---
 
 ### **Quicksort**
