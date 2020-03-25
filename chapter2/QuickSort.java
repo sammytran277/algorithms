@@ -38,7 +38,7 @@ public class QuickSort
             }
 
             /* Keep moving the j pointer to the left until it
-               finds a key less than the partitioning item */
+               finds a key less than the pivot */
             while (array[--j] > pivotValue)
             {
                 if (j == low)
@@ -52,7 +52,7 @@ public class QuickSort
             swap(array, i, j);
         }
 
-        // Puts partitioning item where it belongs in the array
+        // Puts pivot where it belongs in the array
         swap(array, low, j);
         return j;
     }
