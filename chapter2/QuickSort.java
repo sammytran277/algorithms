@@ -26,12 +26,12 @@ public class QuickSort
     public static int partition(int[] array, int low, int high)
     {
         int i = low, j = high + 1;
-        int pivotIndex = array[low];
+        int pivotValue = array[low];
         while (true)
         {
             /* Keep moving the i pointer to the right until it 
                finds a key greater than the pivot */
-            while (array[++i] < pivotIndex)
+            while (array[++i] < pivotValue)
             {
                 if (i == high)
                     break;
@@ -39,7 +39,7 @@ public class QuickSort
 
             /* Keep moving the j pointer to the left until it
                finds a key less than the partitioning item */
-            while (array[--j] > pivotIndex)
+            while (array[--j] > pivotValue)
             {
                 if (j == low)
                     break;
