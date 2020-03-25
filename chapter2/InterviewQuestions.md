@@ -115,15 +115,46 @@ The space complexity (as required above) is constant, or O(1).
 
 ## II. Mergesort
 
-#### 1) Merging with smaller auxiliary array. Suppose that the subarray a[0] to a[n−1] is sorted and the subarray a[n] to a[2∗n−1] is sorted. How can you merge the two subarrays so that a[0] to a[2∗n−1] is sorted using an auxiliary array of length nn (instead of 2n)?
+#### 1) Merging with smaller auxiliary array. Suppose that the subarray a[0] to a[*n−1*] is sorted and the subarray a[*n*] to a[*2\*n−1*] is sorted. How can you merge the two subarrays so that a[0] to a[*2\*n−1*] is sorted using an auxiliary array of length n (instead of *2n*)?
 
-TBD
+To merge with a smaller auxiliary array, we'll just copy a[0..n - 1] to aux[] and use three pointers i, j, and k to do the merging in a similar way to the normal merge with an auxiliary array of size *2n*.
+
+#### Pseudocode:
+
+    def merge(int[] a, int n):
+        initialize aux[] to have size n
+
+        for every item from index 0 to n:
+            copy the item to aux[]
+        
+        initialize and set point i and k to 0
+        initialize and set pointer j to n
+
+        while the i or j pointer have not been exhausted:
+            if the i pointer is exhausted:
+                break out of the loop
+            else if the j pointer is exhausted:
+                set a[k] to aux[i]
+                increment i and k
+            else if aux[i] < a[j]:
+                set a[k] to aux[i]
+                increment i and k
+            else:
+                set a[k] to a[j]
+                increment j and k
+
+#### Time/Space Complexity:
+
+The time complexity of the merging algorithm is O(n) because we need to compare all the items in the array in order to merge them back together properly.
+
+The space complexity is O(n/2) in practice (n/2 because we're typically merging two subarrays of roughly the same size), but from a theoretical standpoint, this is still O(n).
 
 #### 2) Counting inversions. An inversion in an array a[] is a pair of entries a[i] and a[j] such that i < j but a[i] > a[j]. Given an array, design a linearithmic algorithm to count the number of inversions.
 
 TBD
 
-#### 3) Shuffling a linked list. Given a singly-linked list containing n items, rearrange the items uniformly at random. Your algorithm should consume a logarithmic (or constant) amount of extra memory and run in time proportional to n*logn in the worst case.
+
+#### 3) Shuffling a linked list. Given a singly-linked list containing n items, rearrange the items uniformly at random. Your algorithm should consume a logarithmic (or constant) amount of extra memory and run in time proportional to *n\*logn* in the worst case.
 
 TBD
 
@@ -131,5 +162,14 @@ TBD
 
 ## III. Quicksort
         
+#### 1) Nuts and bolts. A disorganized carpenter has a mixed pile of n nuts and n bolts. The goal is to find the corresponding pairs of nuts and bolts. Each nut fits exactly one bolt and each bolt fits exactly one nut. By fitting a nut and a bolt together, the carpenter can see which one is bigger (but the carpenter cannot compare two nuts or two bolts directly). Design an algorithm for the problem that uses at most proportional to *n\*logn* compares (probabilistically).
+
 TBD
 
+#### 2) Selection in two sorted arrays. Given two sorted arrays a[] and b[], of lengths *n<sub>1</sub>* and *n<sub>2</sub>* and an integer 0 <= *k* <= *n<sub>1</sub>* + *n<sub>2</sub>*, design an algorithm to find a key of rank *k*. The order of growth of the worst case running time of your algorithm should be *logn*, where *n* = *n<sub>1</sub>* + *n<sub>2</sub>.*
+
+TBD
+
+#### 3) Decimal dominants. Given an array with nn keys, design an algorithm to find all values that occur more than *n/10* times. The expected running time of your algorithm should be linear.
+
+TBD
