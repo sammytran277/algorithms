@@ -18,20 +18,20 @@ public class QuickSort
     {
         if (high <= low)
             return;
-        int j = partition(array, low, high);
-        quicksort(array, low, j - 1);
-        quicksort(array, j + 1, high);
+        int pivotIndex = partition(array, low, high);
+        quicksort(array, low, pivotIndex - 1);
+        quicksort(array, pivotIndex + 1, high);
     }
 
     public static int partition(int[] array, int low, int high)
     {
         int i = low, j = high + 1;
-        int partitioningItem = array[low];
+        int pivotIndex = array[low];
         while (true)
         {
             /* Keep moving the i pointer to the right until it 
-               finds a key greater than the partitioning item */
-            while (array[++i] < partitioningItem)
+               finds a key greater than the pivot */
+            while (array[++i] < pivotIndex)
             {
                 if (i == high)
                     break;
@@ -39,7 +39,7 @@ public class QuickSort
 
             /* Keep moving the j pointer to the left until it
                finds a key less than the partitioning item */
-            while (array[--j] > partitioningItem)
+            while (array[--j] > pivotIndex)
             {
                 if (j == low)
                     break;
