@@ -136,3 +136,25 @@ The space complexity is O(n), just like the top-down version and for the exact s
 ---
 
 ### **Quicksort**
+
+![Quick Sort GIF](/images/QuickSort.gif)
+
+Finally, we get to quicksort, one of the quickest and most reliable sorting algorithms out there (only worthy competitors are mergesort and heapsort, which we have not covered). Quicksort works by partitioning the array into two parts (stay tuned for 3-way quicksort, which partitions the array into three parts). One part of the array, to the left of the partition, contains all the items less than the partition item, and the other side of the array, to the right of the partition, contains all the items greater than the partition. The left and right side are then quicksorted recursively until the entire array is sorted. Unlike mergesort, which recursively does the left subarray, then the right subarray, and merges the subarrays back together, quicksort partitions the array, and then recursively quicksorts the left and right subarrays.
+
+#### **Time/Space Complexity for Quicksort**
+
+The time complexity for quicksort is O(n * log<sub>2</sub>n), making it just as fast as (on a theoretical level) mergesort. The worst case runtime, however, is O(n<sup>2</sup>) in the case of an already sorted array, because the partitioning scheme just iterates through the array to validate that the pivot is where it should be. To reduce this possibility from happening, the implementation of quicksort in this repository shuffles the array before quicksorting it. The possibility of you shuffling an unsorted array into sorted order is *incredibly* rare.
+
+The space complexity of quicksort is O(log<sub>2</sub>n) because the smallest subarray less than half the size of the entire array, so the recursive call stack is guaranteed to be O(log<sub>2</sub>n).
+
+---
+
+### 3-Way Quicksort
+
+When we implemented quicksort, we partitioned the array into 2 subarrays: the subarray of items less than the pivot and the subarray of items to the right of the pivot. The million dollar question, then, is what do we do about items that are equal to the partitioning item (known as the pivot)? 3-way quicksort seeks to answer this question better than the normal quicksort, which just iterates past items equal to the pivot. In 3-way quicksort, the array is partitioned into 3 parts: less than, equal to, and greater than. This 3-way partitioning scheme is accredited to Edsger Djikstra, who used it to solve the Dutch national flag problem (see the "InterviewQuestions" markdown file in this repository to see my solution to the problem, which is based on 3-way partitioning). 
+
+#### **Time/Space Complexity for 3-Way Quicksort**
+
+Like quicksort, the time complexity is O(n * log<sub>2</sub>n), but the 3-way partitioning scheme allows the algorithm to work faster in the presence of duplicate keys, which is very common in practice. 
+
+The space complexity is O(log<sub>2</sub>n), same as quicksort and for the same reasons.
