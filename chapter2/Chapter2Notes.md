@@ -1,8 +1,8 @@
-# **Notes on Sorting Algorithms and Priority Queues**
+# **Notes on Sorting Algorithms and Priority Queues/Heaps**
 
 ## **Introduction**
 
-In chapter 2, we learn about three elementary sorting algorithms (namely, selection sort, insertion sort, and Shellsort), two classic divide-and-conquer sorting algorithms (mergesort and quicksort), and priority queues. Though not mentioned in the book/course, I've also included bubble sort for fun. Notes on everything are given below.
+In chapter 2, we learn about three elementary sorting algorithms (namely, selection sort, insertion sort, and Shellsort), two classic divide-and-conquer sorting algorithms (mergesort and quicksort), and priority queues, which will be used to introduce heaps. Though not mentioned in the book/course, I've also included bubble sort for fun. Notes on everything are given below.
 
 ---
 
@@ -14,6 +14,8 @@ In chapter 2, we learn about three elementary sorting algorithms (namely, select
 * [Shellsort](#shellsort)
 * [Mergesort](#mergesort)
 * [Quicksort](#quicksort)
+* [Priority Queues](#priority-queues)
+* [Heaps](#heaps)
 
 ---
 
@@ -158,3 +160,41 @@ When we implemented quicksort, we partitioned the array into 2 subarrays: the su
 Like quicksort, the time complexity is O(n * log<sub>2</sub>n), but the 3-way partitioning scheme allows the algorithm to work faster in the presence of duplicate keys, which is very common in practice. 
 
 The space complexity is O(log<sub>2</sub>n), same as quicksort and for the same reasons.
+
+---
+
+### **Priority Queues**
+
+A priority queue is an *abstract data type* that has the following operations: <br>
+* insert(): Inserts a key into the priority queue
+* max(): Returns the largest key
+* delMax(): Pops the largest key out of the priority queue
+* isEmpty(): Returns a boolean representing whether or not the priority queue is empty
+* size(): Returns the number of keys in the priority queue
+
+The operations above are for a priority queue that cares about maximum keys. We could easy change the implementation to build a priority queue that works with minimum keys instead if we need to.
+
+#### **Time Complexity for Priority Queue Operations**
+
+The time complexity of basic priority queue operations depends on the implementation details. For instance, we could store the keys in an array, a linked list, or a heap, which we will cover next. For either data structure, we could either sort the keys or choose not to.
+
+For an unordered array:
+* Insertion - O(1)
+* Popping - O(n)
+
+For a sorted array:
+* Insertion - O(n)
+* Popping - O(1)
+
+For a heap:
+* Insertion - O(logn)
+* Popping - O(logn)
+
+---
+
+### **Heaps**
+
+TBD
+
+---
+

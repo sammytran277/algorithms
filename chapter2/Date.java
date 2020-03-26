@@ -58,7 +58,7 @@ public class Date implements Comparable<Date>
     public static void main(String[] args)
     {
         Date myBirthday = new Date(2, 1, 2000);
-        Date today = new Date(3, 32, 2020);
+        Date today = new Date(3, 22, 2020);
 
         if (greater(today, myBirthday))
             System.out.println(today + " > " + myBirthday);
