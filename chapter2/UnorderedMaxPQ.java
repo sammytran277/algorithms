@@ -1,3 +1,6 @@
+/* Adapted code from "Algorithms" by Robert Sedgewick and Thomas Wayne 
+   to implement an unordered max priority queue */
+
 public class UnorderedMaxPQ<Key extends Comparable<Key>>
 {
     private Key[] pq;
