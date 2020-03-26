@@ -2,7 +2,7 @@
 
 ## **Introduction**
 
-In chapter 2, we learn about three elementary sorting algorithms (namely, selection sort, insertion sort, and Shellsort), two classic divide-and-conquer sorting algorithms (mergesort and quicksort), and priority queues, which will be used to introduce heaps. Though not mentioned in the book/course, I've also included bubble sort for fun. Notes on everything are given below.
+In chapter 2, we learn about three elementary sorting algorithms (namely, selection sort, insertion sort, and Shellsort), two classic divide-and-conquer sorting algorithms (mergesort and quicksort), and priority queues, which will be used to introduce heaps as well as heapsort. Though not mentioned in the book/course, I've also included bubble sort for fun. Notes on everything are given below.
 
 ---
 
@@ -194,7 +194,51 @@ For a heap:
 
 ### **Heaps**
 
-TBD
+![Example of a Heap](/images/Heaps.png)
+
+A heap looks a lot like a binary search tree, but there are a few key differences:
+
+1. In a heap, the parent node's key is always greater than or equal to the keys of its child.
+2. Heaps are *complete* binary trees (all levels except bottom must be full and the bottom level's nodes must be on the left).
+3. Heaps are actually implemented in priority queues as arrays in *level-order* (root at index 1, children at index 2 and 3, and so forth). This allows us to represent the tree without having to manage explicit links between the nodes.
+
+If you read (3) carefully, you may be curious as to why the root is at index 1, instead of 0. The simple reason is because starting at index 1 allows us to use two generalized formulas for computing where a node's parent or children are. For the k'th node (in level-order) in a heap, its parent is at index *k / 2* (this is *integer* division) and its children are at indexes *2k* and *2k + 1*.
+
+#### **Heap Maintenance**
+
+As new nodes are added or removed from the heap, the heap may no longer be *heap-ordered*. Luckily for us, there are two ways to restore order to (or *re-heapify*) a heap: swimming and sinking.
+
+#### **Swimming up a Heap**
+
+![Heap Swimming Example](/images/HeapSwim.png)
+
+Sometimes, for whatever reason, a node with a key that is greater than its parent ends up violating the heap invariant. In order to restore order to the heap, the node is said to *swim* up the heap. Pseudocode is given below:
+
+    def swim(int k):
+        while we aren't at the root and the parent of the node is less than the node itself:
+          swap the k'th node with its parent
+          set k to k / 2
+
+#### **Sinking Down a Heap**
+
+![Heap Sinking Example](/images/HeapSink.png)
+
+Another case that might occur is a node with a key that is smaller than its children. To fix this, the node is said to *sink* down the heap. Like before, pseudocode is given below:
+
+    def sink(int k):
+        while k still has children nodes:
+            set j to the index of the left child
+            if the right child is bigger than the left child:
+                increment j by 1  
+            if the children are both smaller:
+                stop
+            swap the k'th node with the larger of the two children
+            set k to j   
+
+#### **Time Complexity for Heap-based Priority Queues**
+
+Because of the smart design of the data structure, heaps are able to insert and remove the greatest key from a priority queue with a runtime of O(log<sub>2</sub>n). This is significantly faster than the basic implementation we've seen before, and is the basis for the next topic, which is a sorting algorithm that utilizes the power of heaps.
 
 ---
 
+### **Heapsort**
