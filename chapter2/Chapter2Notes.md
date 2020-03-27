@@ -2,7 +2,7 @@
 
 ## **Introduction**
 
-In chapter 2, we learn about three elementary sorting algorithms (namely, selection sort, insertion sort, and Shellsort), two classic divide-and-conquer sorting algorithms (mergesort and quicksort), and priority queues, which will be used to introduce heaps as well as heapsort. Though not mentioned in the book/course, I've also included bubble sort for fun. Notes on everything are given below.
+In chapter 2, we learn about three elementary sorting algorithms (namely, selection sort, insertion sort, and Shellsort), two classic divide-and-conquer sorting algorithms (mergesort and quicksort), and priority queues, which will be used to introduce heaps as well as heapsort. Though not mentioned in the book/course, I've also included bubble sort for fun. Notes on everything are given below. The images/gifs below are not mine.
 
 ---
 
@@ -16,6 +16,7 @@ In chapter 2, we learn about three elementary sorting algorithms (namely, select
 * [Quicksort](#quicksort)
 * [Priority Queues](#priority-queues)
 * [Heaps](#heaps)
+* [Heapsort](#heapsort)
 
 ---
 
@@ -242,3 +243,48 @@ Because of the smart design of the data structure, heaps are able to insert and 
 ---
 
 ### **Heapsort**
+
+![Heap Sort GIF](/images/HeapSort.gif)
+
+Heapsort is, with mergesort and quicksort, considered one of the fastest general sorting algorithms. This sorting algorithm works by taking an array, transforming it into a heap, and then sorting the heap by popping off the max key. In practice, heapsort is not always the best choice because of 3 main reasons:
+1. Heapsort's inner loop is longer than quicksort's inner loop
+2. Heapsort makes poor use of cache memory (does "index arithmetic" rather than comparisons with nearby keys like other sorting algorithms)
+3. Not stable, like mergesort
+
+#### **Building a Heap**
+
+To build a heap from an array, it is possible to build by scanning the array from left to right, calling swim() to properly swap problematic nodes, but we will be clever and go from right to left because it allows us to build smaller subheaps so that our calls to sink() have less to do. Actually, the code for build a heap from an array is so simple that full code is given below:
+
+    public static void heapify(Comparable[] a)
+    {
+        int N = a.length();
+        for (int k = N / 2; k <= 1; k--)
+            sink(a, k, N);
+    }
+
+Essentially, all we're doing is starting from the middle of the array and calling sink() on each node until we reach index 0. The reason why we can afford to start in the middle of the array is because the right side contains leaf nodes (no children), so they would be subheaps of size 1, meaning there is nothing to sink. Remarkably, this entire process of building a heap can be done in O(n) time.
+
+#### **Sorting a Max Heap**
+
+Once we have a max heap, it is time to actually do the sorting. Like with building the heap, the code is actually very intuitive. To do the sorting, all we do is swap the root node with the last node in the heap and decrement the variable containing the size of the heap (we aren't actually changing the size of the heap, just the index so the code is tricked into thinking the root node that was swapped is gone). After that is done, we call sink() on the new root node to kep everything back in heap-order. We repeat this until there's nothing left in the heap (according to that variable) besides the root. The full heapsort code, including heap construction, is given below:
+
+    public static void heapsort(Comparable[] a)
+    {
+        // Heap construction
+        int N = a.length();
+        for (int k = N / 2; k <= 1; k--)
+            sink(a, k, N);
+
+        // Sorting the heap
+        while (N > 1)
+        {
+            swap(a, 1, N--);
+            sink(a, 1, N);
+        }
+    }
+
+#### **Time/Space Complexity for Heapsort**
+
+The time complexity for heapsort is O(n * log<sub>2</sub>n) for all cases, making it edge out over quicksort in theory because of quicksort's O(n<sup>2</sup>) worst case runtime. The time complexity for the heap construction is O(n), which gets dominated by the time it takes to sort the heap itself.
+
+The space complexity for heapsort is O(1) because it does the heap construction and sorting in-place. This is the advantage heapsort has over mergesort. Instead of need O(n) space for an auxiliary array like mergesort, heapsort trades stability for the ability to sort in-place, making it ideal for when space is at a premium (think embedded systems, mobile devices).
